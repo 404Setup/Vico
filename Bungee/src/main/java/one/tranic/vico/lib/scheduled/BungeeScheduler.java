@@ -29,7 +29,8 @@ public class BungeeScheduler implements ProxySchedulerImpl<Plugin> {
 
     @Override
     public @Nullable TaskImpl<Plugin> runAsyncOnPlugin(@NotNull Plugin plugin, @NotNull Runnable task) {
-        return new BungeeScheduledTask<>(server.getScheduler().runAsync(plugin, task));
+        executor.execute(task);
+        return null;
     }
 
     @Override
