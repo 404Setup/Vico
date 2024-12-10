@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "one.tranic"
-version = "24.12.0"
+version = "24.12.0-Beta1"
 
 val targetJavaVersion = 17
 

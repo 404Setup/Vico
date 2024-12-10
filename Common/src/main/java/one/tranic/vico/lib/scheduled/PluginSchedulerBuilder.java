@@ -4,6 +4,7 @@ import io.papermc.paper.threadedregions.scheduler.AsyncScheduler;
 import io.papermc.paper.threadedregions.scheduler.EntityScheduler;
 import io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler;
 import io.papermc.paper.threadedregions.scheduler.RegionScheduler;
+import one.tranic.vico.Platform;
 import one.tranic.vico.lib.scheduled.task.FoliaScheduledTask;
 import one.tranic.vico.lib.scheduled.task.SpigotScheduledTask;
 import one.tranic.vico.lib.scheduled.task.TaskImpl;
@@ -26,17 +27,13 @@ public class PluginSchedulerBuilder {
     private Location location;
     private Entity entity;
 
-    public PluginSchedulerBuilder(boolean folia, Plugin plugin) {
-        this.folia = folia;
+    public PluginSchedulerBuilder(Plugin plugin) {
+        this.folia = (Platform.get() == Platform.Folia) || (Platform.get() == Platform.ShreddedPaper);
         this.plugin = plugin;
     }
 
     public static PluginSchedulerBuilder builder(Plugin plugin) {
-        return new PluginSchedulerBuilder(false, plugin);
-    }
-
-    public static PluginSchedulerBuilder builder(Plugin plugin, boolean folia) {
-        return new PluginSchedulerBuilder(folia, plugin);
+        return new PluginSchedulerBuilder(plugin);
     }
 
     public PluginSchedulerBuilder sync() {
