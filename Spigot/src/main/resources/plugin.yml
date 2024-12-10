@@ -1,0 +1,9 @@
+name: Vico
+version: '${version}'
+main: one.tranic.vico.app.SpigotApp
+api-version: '1.18.2'
+load: STARTUP
+authors: [ "404" ]
+description: Sharing program code dependency library
+folia-supported: true
+website: https://tranic.one

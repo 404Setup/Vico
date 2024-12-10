@@ -1,0 +1,5 @@
+name: Vico
+version: '${version}'
+main: one.tranic.vico.app.BungeeApp
+author: 404
+description: Sharing program code dependency library
