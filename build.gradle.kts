@@ -43,7 +43,10 @@ dependencies {
     implementation(project(":folia", configuration = "shadow"))
     implementation(project(":bungee", configuration = "shadow"))
 
-    implementation("com.github.Carleslc.Simple-YAML:Simple-Yaml:1.8.4")
+    compileOnly("org.yaml:snakeyaml:2.3")
+    implementation("com.github.Carleslc.Simple-YAML:Simple-Yaml:1.8.4") {
+        exclude("org.yaml", "snakeyaml")
+    }
 }
 
 allprojects {
@@ -63,8 +66,9 @@ allprojects {
         maven("https://repo.codemc.io/repository/maven-public/")
         maven("https://jitpack.io")
     }
+
     dependencies {
-        implementation("com.google.code.gson:gson:2.11.0")
+        compileOnly("com.google.code.gson:gson:2.11.0")
         implementation("org.jetbrains:annotations:24.1.0")
     }
 }
