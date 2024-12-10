@@ -74,7 +74,6 @@ public class ModrinthUpdate implements Updater {
                 }
             }
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
             throw new IOException("Request interrupted", e);
         }
 

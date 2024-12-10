@@ -1,12 +1,12 @@
 package one.tranic.vico.updater.spiget;
 
 import com.google.gson.Gson;
-import one.tranic.vico.Utils;
 import one.tranic.vico.updater.UpdateRecord;
 import one.tranic.vico.updater.Updater;
 import one.tranic.vico.updater.VersionComparator;
 import one.tranic.vico.updater.spiget.source.SpigetLatestUpdateSource;
 import one.tranic.vico.updater.spiget.source.SpigetLatestVersionSource;
+import one.tranic.vico.utils.Html;
 
 import java.io.IOException;
 import java.net.URI;
@@ -87,7 +87,7 @@ public class SpigetUpdate implements Updater {
             return new UpdateRecord(
                     true,
                     updater.getName(),
-                    Utils.decodeAndStripHtml(updater2.getDescription()),
+                    Html.decodeAndStripHtml(updater2.getDescription()),
                     "https://www.spigotmc.org/resources/" + resourceId + "/"
             );
         } catch (InterruptedException e) {

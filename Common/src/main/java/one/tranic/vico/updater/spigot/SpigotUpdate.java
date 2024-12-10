@@ -56,7 +56,6 @@ public class SpigotUpdate implements Updater {
                 return new UpdateRecord(true, body, "Update info is empty", "https://www.spigotmc.org/resources/" + resourceId + "/");
             }
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
             throw new IOException("Request interrupted", e);
         }
 

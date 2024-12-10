@@ -6,6 +6,7 @@ dependencies {
     implementation("net.kyori:adventure-text-minimessage:4.17.0")
 
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
+    compileOnly("it.unimi.dsi:fastutil:8.5.15")
 }
 
 val targetJavaVersion = 17

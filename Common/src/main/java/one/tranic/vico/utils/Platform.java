@@ -1,4 +1,4 @@
-package one.tranic.vico;
+package one.tranic.vico.utils;
 
 import org.jetbrains.annotations.NotNull;
 

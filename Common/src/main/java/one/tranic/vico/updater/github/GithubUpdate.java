@@ -59,7 +59,6 @@ public class GithubUpdate implements Updater {
                 return new UpdateRecord(true, updater.getTagName(), cleanBody, "https://github.com/" + repo + "/releases/tag/" + updater.getTagName());
             }
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
             throw new IOException("Request interrupted", e);
         }
 

@@ -4,7 +4,7 @@ import io.papermc.paper.threadedregions.scheduler.AsyncScheduler;
 import io.papermc.paper.threadedregions.scheduler.EntityScheduler;
 import io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler;
 import io.papermc.paper.threadedregions.scheduler.RegionScheduler;
-import one.tranic.vico.Platform;
+import one.tranic.vico.utils.Platform;
 import one.tranic.vico.lib.scheduled.task.FoliaScheduledTask;
 import one.tranic.vico.lib.scheduled.task.SpigotScheduledTask;
 import one.tranic.vico.lib.scheduled.task.TaskImpl;

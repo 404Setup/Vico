@@ -1,6 +1,6 @@
 package one.tranic.vico.lib.player;
 
-import one.tranic.vico.Platform;
+import one.tranic.vico.utils.Platform;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 

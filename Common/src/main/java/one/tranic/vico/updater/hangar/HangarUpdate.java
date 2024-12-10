@@ -65,7 +65,6 @@ public class HangarUpdate implements Updater {
                 return new UpdateRecord(true, first.getName(), first.getDescription(), address + "/versions/" + first.getName());
             }
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
             throw new IOException("Request interrupted", e);
         }
 

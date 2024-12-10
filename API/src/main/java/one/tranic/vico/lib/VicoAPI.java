@@ -1,6 +1,6 @@
 package one.tranic.vico.lib;
 
-import one.tranic.vico.Platform;
+import one.tranic.vico.utils.Platform;
 import one.tranic.vico.lib.scheduled.BungeeScheduler;
 import one.tranic.vico.lib.scheduled.PluginSchedulerBuilder;
 import one.tranic.vico.lib.scheduled.ProxySchedulerImpl;
