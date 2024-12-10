@@ -1,8 +1,11 @@
 package one.tranic.vico.lib.message;
 
+import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.platform.bungeecord.BungeeAudiences;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.title.Title;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,14 +27,22 @@ public class BungeeMessageSender implements MessageSenderImpl<CommandSender, Plu
 
     @Override
     public void sendMessage(@Nullable String message, @NotNull CommandSender sender) {
-        if (message == null) return;
-        sender.sendMessage(message);
+        if (message != null) sender.sendMessage(message);
     }
 
     @Override
     public void sendMessage(@Nullable Component message, @NotNull CommandSender sender) {
-        if (message == null) return;
-        adventure().sender(sender).sendMessage(message);
+        if (message != null) adventure().sender(sender).sendMessage(message);
+    }
+
+    @Override
+    public void showBossbar(@NotNull BossBar bossBar, @NotNull CommandSender sender) {
+        if (sender instanceof ProxiedPlayer) adventure().sender(sender).showBossBar(bossBar);
+    }
+
+    @Override
+    public void showTitle(@NotNull Title title, @NotNull CommandSender sender) {
+        if (sender instanceof ProxiedPlayer) adventure().sender(sender).showTitle(title);
     }
 
     @Override

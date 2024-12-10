@@ -20,21 +20,13 @@ public class VelocityScheduler<C> implements ProxySchedulerImpl<C> {
                         .setNameFormat("Vico Async Event Executor - #%d").setDaemon(true).build());
     }
 
-    /**
-     * Returns a task that will run on the next server tick.
-     *
-     * @param plugin the reference to the plugin scheduling task
-     * @param task   the task to be run
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
-     */
     @Override
-    public TaskImpl<C> runSync(@NotNull C plugin, @NotNull Runnable task) {
+    public TaskImpl<C> runAsyncOnProxy(@NotNull C plugin, @NotNull Runnable task) {
         return new VelocityScheduledTask<>(server.getScheduler().buildTask(plugin, task).schedule());
     }
 
     @Override
-    public @Nullable TaskImpl<C> runAsync(@NotNull C plugin, @NotNull Runnable task) {
+    public @Nullable TaskImpl<C> runAsyncOnPlugin(@NotNull C plugin, @NotNull Runnable task) {
         this.executor.execute(task);
         return null;
     }

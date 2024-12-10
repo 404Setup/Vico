@@ -1,22 +1,25 @@
 package one.tranic.vico.lib;
 
+import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.plugin.Plugin;
+import one.tranic.vico.lib.message.BungeeMessageSender;
 import one.tranic.vico.lib.message.MessageSenderImpl;
-import one.tranic.vico.lib.player.PluginPlayerImpl;
-import org.jetbrains.annotations.Nullable;
 
 public class BungeeVico implements VicoImpl {
+    private final MessageSenderImpl<CommandSender, Plugin> bms;
+
+    public BungeeVico() {
+        this.bms = new BungeeMessageSender();
+        this.bms.adventure();
+    }
+
     @Override
-    public MessageSenderImpl getMessageSender() {
-        return null;
+    public MessageSenderImpl<CommandSender, Plugin> getMessageSender() {
+        return bms;
     }
 
     @Override
     public void close() {
-        VicoImpl.super.close();
-    }
-
-    @Override
-    public @Nullable PluginPlayerImpl getPlayer() {
-        return VicoImpl.super.getPlayer();
+        bms.close();
     }
 }

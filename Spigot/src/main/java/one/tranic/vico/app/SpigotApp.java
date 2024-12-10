@@ -7,7 +7,7 @@ public class SpigotApp extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        metrics = new SpigotMetrics(this, 23952);
+        metrics = new SpigotMetrics(this, 24113);
     }
 
     @Override

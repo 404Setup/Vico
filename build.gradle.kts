@@ -37,6 +37,7 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":api", configuration = "shadow"))
     implementation(project(":common", configuration = "shadow"))
     implementation(project(":velocity", configuration = "shadow"))
     implementation(project(":folia", configuration = "shadow"))

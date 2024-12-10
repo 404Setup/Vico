@@ -25,7 +25,7 @@ public class VelocityApp {
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
-        metrics = metricsFactory.make(this, 23954);
+        metrics = metricsFactory.make(this, 24115);
     }
 
     @Subscribe

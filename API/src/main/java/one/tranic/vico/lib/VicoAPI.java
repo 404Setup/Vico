@@ -2,12 +2,20 @@ package one.tranic.vico.lib;
 
 import one.tranic.vico.Platform;
 import one.tranic.vico.lib.scheduled.BungeeScheduler;
+import one.tranic.vico.lib.scheduled.PluginSchedulerBuilder;
 import one.tranic.vico.lib.scheduled.ProxySchedulerImpl;
 import one.tranic.vico.lib.scheduled.VelocityScheduler;
 import org.jetbrains.annotations.NotNull;
 
 public class VicoAPI {
-    public <T> ProxySchedulerImpl getProxyScheduler(T proxyServer) {
+    /***
+     * Get the proxy server scheduler.
+     * <p>
+     * If you need a plugin server scheduler, use {@link PluginSchedulerBuilder#builder(org.bukkit.plugin.Plugin)}.
+     * @param proxyServer
+     * @return {@link ProxySchedulerImpl}
+     */
+    public ProxySchedulerImpl getProxyScheduler(Object proxyServer) {
         @NotNull Platform platform = Platform.get();
         if (platform == Platform.Velocity) {
             return new VelocityScheduler((com.velocitypowered.api.proxy.ProxyServer) proxyServer);
@@ -19,9 +27,12 @@ public class VicoAPI {
 
     public VicoImpl getVicoPlugin() {
         @NotNull Platform platform = Platform.get();
-        if (platform == Platform.Spigot) return new SpigotVico();
-        if (platform == Platform.Paper || platform == Platform.Folia || platform == Platform.ShreddedPaper)
-            return new PaperVico();
-        throw new IllegalArgumentException("Unsupported platform: " + platform);
+        return switch (platform) {
+            case Spigot -> new SpigotVico();
+            case Folia, ShreddedPaper, Paper -> new PaperVico();
+            case BungeeCord -> new BungeeVico();
+            case Velocity -> new VelocityVico();
+            default -> throw new IllegalArgumentException("Unsupported platform: " + platform);
+        };
     }
 }

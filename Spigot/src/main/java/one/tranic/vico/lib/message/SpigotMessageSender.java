@@ -1,7 +1,10 @@
 package one.tranic.vico.lib.message;
 
+import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import net.kyori.adventure.title.Title;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -31,13 +34,21 @@ public class SpigotMessageSender implements MessageSenderImpl<CommandSender, Plu
 
     @Override
     public void sendMessage(String message, @NotNull CommandSender sender) {
-        if (message == null) return;
-        sender.sendMessage(message);
+        if (message != null) sender.sendMessage(message);
     }
 
     @Override
     public void sendMessage(net.kyori.adventure.text.@Nullable Component message, @NotNull CommandSender sender) {
-        if (message == null) return;
-        adventure().sender(sender).sendMessage(message);
+        if (message != null) adventure().sender(sender).sendMessage(message);
+    }
+
+    @Override
+    public void showBossbar(@NotNull BossBar bossBar, @NotNull CommandSender sender) {
+        if (sender instanceof Player) adventure().sender(sender).showBossBar(bossBar);
+    }
+
+    @Override
+    public void showTitle(@NotNull Title title, @NotNull CommandSender sender) {
+        if (sender instanceof Player) adventure().sender(sender).showTitle(title);
     }
 }

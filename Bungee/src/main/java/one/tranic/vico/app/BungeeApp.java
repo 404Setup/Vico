@@ -7,7 +7,7 @@ public final class BungeeApp extends Plugin {
 
     @Override
     public void onEnable() {
-        metrics = new BungeeMetrics(this, 23953);
+        metrics = new BungeeMetrics(this, 24114);
     }
 
     @Override
