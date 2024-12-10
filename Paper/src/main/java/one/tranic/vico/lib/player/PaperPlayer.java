@@ -1,5 +1,6 @@
 package one.tranic.vico.lib.player;
 
+import one.tranic.vico.Platform;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -11,6 +12,10 @@ public class PaperPlayer implements PluginPlayerImpl {
 
     @Override
     public boolean teleport(Player player, Location location) {
+        if (Platform.get() == Platform.Folia || Platform.get() == Platform.ShreddedPaper) {
+            player.teleportAsync(location);
+            return true;
+        }
         return player.teleport(location);
     }
 
