@@ -5,8 +5,12 @@ import com.velocitypowered.api.proxy.Player;
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.Title;
+import one.tranic.vico.app.VelocityApp;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
+import java.util.UUID;
 
 public class VelocityMessageSender implements MessageSenderImpl<CommandSource, Object> {
     @Override
@@ -27,5 +31,29 @@ public class VelocityMessageSender implements MessageSenderImpl<CommandSource, O
     @Override
     public void showTitle(@NotNull Title title, @NotNull CommandSource sender) {
         if (sender instanceof Player) sender.showTitle(title);
+    }
+
+    private void kickPlayer(Optional<Player> player, @Nullable Component reason) {
+        player.ifPresent(value -> value.disconnect(reason == null ? kickReason : reason));
+    }
+
+    @Override
+    public void kickPlayer(@Nullable Component reason, @NotNull UUID target) {
+        kickPlayer(VelocityApp.getInstance().getServer().getPlayer(target), reason);
+    }
+
+    @Override
+    public void kickPlayer(@Nullable String reason, @NotNull UUID target) {
+        kickPlayer(VelocityApp.getInstance().getServer().getPlayer(target), reason == null ? null : Component.text(reason));
+    }
+
+    @Override
+    public void kickPlayer(@Nullable Component reason, @NotNull String target) {
+        kickPlayer(VelocityApp.getInstance().getServer().getPlayer(target), reason);
+    }
+
+    @Override
+    public void kickPlayer(@Nullable String reason, @NotNull String target) {
+        kickPlayer(VelocityApp.getInstance().getServer().getPlayer(target), reason == null ? null : Component.text(reason));
     }
 }

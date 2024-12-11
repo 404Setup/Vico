@@ -5,6 +5,7 @@ import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.proxy.ProxyShutdownEvent;
 import com.velocitypowered.api.plugin.Plugin;
+import com.velocitypowered.api.proxy.ProxyServer;
 
 @Plugin(
         id = "vico",
@@ -15,12 +16,25 @@ import com.velocitypowered.api.plugin.Plugin;
         authors = {"404"}
 )
 public class VelocityApp {
+    private static VelocityApp instance;
+    private final ProxyServer proxy;
     private final VelocityMetrics.Factory metricsFactory;
     private VelocityMetrics metrics;
 
     @Inject
-    public VelocityApp(VelocityMetrics.Factory metricsFactory) {
+    public VelocityApp(ProxyServer proxy , VelocityMetrics.Factory metricsFactory) {
+        instance = this;
+
+        this.proxy = proxy;
         this.metricsFactory = metricsFactory;
+    }
+
+    public ProxyServer getServer() {
+        return proxy;
+    }
+
+    public static VelocityApp getInstance() {
+        return instance;
     }
 
     @Subscribe

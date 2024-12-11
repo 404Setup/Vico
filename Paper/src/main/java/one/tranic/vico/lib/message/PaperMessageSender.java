@@ -1,12 +1,17 @@
 package one.tranic.vico.lib.message;
 
 import net.kyori.adventure.bossbar.BossBar;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.title.Title;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 public class PaperMessageSender implements MessageSenderImpl<CommandSender, Plugin> {
     private Plugin plugin;
@@ -34,5 +39,33 @@ public class PaperMessageSender implements MessageSenderImpl<CommandSender, Plug
     @Override
     public void showTitle(@NotNull Title title, @NotNull CommandSender sender) {
         if (sender instanceof Player) sender.showTitle(title);
+    }
+
+    private void kickPlayer(@Nullable Player player, @Nullable Component reason) {
+        if (player != null) player.kick(reason == null ? kickReason : reason);
+    }
+
+    private void kickPlayer(@Nullable Player player, @Nullable String reason) {
+        if (player != null) player.kickPlayer(reason == null ? kickReasonStr : reason);
+    }
+
+    @Override
+    public void kickPlayer(@Nullable Component reason, @NotNull UUID target) {
+        kickPlayer(Bukkit.getPlayer(target), reason);
+    }
+
+    @Override
+    public void kickPlayer(@Nullable String reason, @NotNull UUID target) {
+        kickPlayer(Bukkit.getPlayer(target), reason);
+    }
+
+    @Override
+    public void kickPlayer(@Nullable Component reason, @NotNull String target) {
+        kickPlayer(Bukkit.getPlayer(target), reason);
+    }
+
+    @Override
+    public void kickPlayer(@Nullable String reason, @NotNull String target) {
+        kickPlayer(Bukkit.getPlayer(target), reason);
     }
 }

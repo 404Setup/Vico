@@ -22,7 +22,7 @@ public class PaperVico implements VicoImpl {
     }
 
     @Override
-    public PluginPlayerImpl getPlayer() {
+    public PluginPlayerImpl getPluginPlayer() {
         return player;
     }
 }

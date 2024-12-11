@@ -10,7 +10,7 @@ public interface VicoImpl {
     default void close() {
     }
 
-    default @Nullable PluginPlayerImpl getPlayer() {
+    default @Nullable PluginPlayerImpl getPluginPlayer() {
         return null;
     }
 }

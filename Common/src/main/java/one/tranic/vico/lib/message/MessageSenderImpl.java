@@ -8,7 +8,12 @@ import net.kyori.adventure.title.Title;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.UUID;
+
 public interface MessageSenderImpl<C, B> {
+    Component kickReason = Component.text("Being kicked from the server");
+    String kickReasonStr = "Being kicked from the server";
+
     default @Nullable AudienceProvider adventure() {
         throw new UnsupportedOperationException();
     }
@@ -29,6 +34,14 @@ public interface MessageSenderImpl<C, B> {
     void showBossbar(@NotNull BossBar bossBar, @NotNull C sender);
 
     void showTitle(@NotNull Title title, @NotNull C sender);
+
+    void kickPlayer(@Nullable Component reason, @NotNull UUID target);
+
+    void kickPlayer(@Nullable String reason, @NotNull UUID target);
+
+    void kickPlayer(@Nullable Component reason, @NotNull String target);
+
+    void kickPlayer(@Nullable String reason, @NotNull String target);
 
     default void close() {
         throw new UnsupportedOperationException();
