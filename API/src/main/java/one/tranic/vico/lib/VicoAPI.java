@@ -7,8 +7,6 @@ import one.tranic.vico.lib.scheduled.ProxySchedulerImpl;
 import one.tranic.vico.lib.scheduled.VelocityScheduler;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.concurrent.CompletableFuture;
-
 public class VicoAPI {
     /***
      * Get the proxy server scheduler.
@@ -18,10 +16,6 @@ public class VicoAPI {
      * @return {@link ProxySchedulerImpl}
      */
     public static ProxySchedulerImpl getProxyScheduler(Object proxyServer) {
-        VicoImpl plugin = VicoAPI.getVicoPlugin();
-        plugin.getPluginPlayer().teleport(player, location);
-        CompletableFuture<Boolean> result = plugin.getPluginPlayer().teleportAsync(player, location);
-        plugin.getMessageSender().close(); // Called when the plugin is closed
         @NotNull Platform platform = Platform.get();
         if (platform == Platform.Velocity) {
             return new VelocityScheduler((com.velocitypowered.api.proxy.ProxyServer) proxyServer);

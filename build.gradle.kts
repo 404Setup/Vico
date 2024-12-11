@@ -29,7 +29,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 repositories {
     maven("https://maven-central-asia.storage-download.googleapis.com/maven2/")
-    maven("https://oss.sonatype.org/content/groups/public/")
+    maven("https://s01.oss.sonatype.org/content/groups/public/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.codemc.io/repository/maven-public/")
@@ -60,7 +60,7 @@ allprojects {
 
     repositories {
         maven("https://maven-central-asia.storage-download.googleapis.com/maven2/")
-        maven("https://oss.sonatype.org/content/groups/public/")
+        maven("https://s01.oss.sonatype.org/content/groups/public/")
         maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
         maven("https://repo.papermc.io/repository/maven-public/")
         maven("https://repo.codemc.io/repository/maven-public/")
